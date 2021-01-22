@@ -45,7 +45,7 @@ function App() {
         <main className={classes.main}>
           <Paper className={classes.paper}>
             <Typography component="h1" variant="h4" align="center">
-              Pokomenos
+              Pokémon
             </Typography>
 
           </Paper>

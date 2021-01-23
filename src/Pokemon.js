@@ -1,8 +1,9 @@
 import {Accordion, AccordionDetails, AccordionSummary, makeStyles, Typography} from "@material-ui/core";
-import React from "react";
+import React, {useState} from "react";
 import axios from "axios";
 import PokemonDetails from "./PokemonDetails";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import Error from "./Error";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -17,7 +18,8 @@ const useStyles = makeStyles(() => ({
 function Pokemon({name, url}) {
   const classes = useStyles();
 
-  const [details, setDetails] = React.useState(null);
+  const [details, setDetails] = useState(null);
+  const [error, setError] = useState(null);
 
   function fetchDetails() {
     axios.get(url)
@@ -26,6 +28,7 @@ function Pokemon({name, url}) {
       })
       .catch(function (error) {
         console.error(error);
+        setError(error);
       });
   }
 
@@ -48,7 +51,7 @@ function Pokemon({name, url}) {
         <Typography className={classes.name}>{name}</Typography>
       </AccordionSummary>
       <AccordionDetails>
-        {<PokemonDetails details={details} />}
+        {error ? <Error /> : <PokemonDetails details={details} />}
       </AccordionDetails>
     </Accordion>
   );

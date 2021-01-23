@@ -37,17 +37,14 @@ function Pokemon({name, url}) {
       className={classes.root}
       TransitionProps={{
         mountOnEnter: true
-      }}>
-      <AccordionSummary
-        expandIcon={<ExpandMoreIcon />}
-        IconButtonProps={{
-          onClick: () => {
-            if (!details) {
-              fetchDetails();
-            }
-          }
-        }}
-      >
+      }}
+      onChange={() => {
+        if (!details) {
+          fetchDetails();
+        }
+      }}
+    >
+      <AccordionSummary expandIcon={<ExpandMoreIcon />}>
         <Typography className={classes.name}>{name}</Typography>
       </AccordionSummary>
       <AccordionDetails>

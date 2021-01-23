@@ -4,34 +4,32 @@ import {AppBar, makeStyles, Paper, Toolbar, Typography} from "@material-ui/core"
 import {ThemeProvider} from "@material-ui/core/styles";
 import ListOfPokemon from "./ListOfPokemon";
 
-const useStyles = makeStyles((theme) => {
-  return ({
-    header: {
-      position: "relative",
+const useStyles = makeStyles((theme) => ({
+  header: {
+    position: "relative",
+  },
+  main: {
+    flexBasis: "auto",
+    width: "auto",
+    marginLeft: theme.spacing(2),
+    marginRight: theme.spacing(2),
+    [theme.breakpoints.up(600 + theme.spacing(2) * 2)]: {
+      width: 600,
+      marginLeft: "auto",
+      marginRight: "auto",
     },
-    main: {
-      flexBasis: "auto",
-      width: "auto",
-      marginLeft: theme.spacing(2),
-      marginRight: theme.spacing(2),
-      [theme.breakpoints.up(600 + theme.spacing(2) * 2)]: {
-        width: 600,
-        marginLeft: "auto",
-        marginRight: "auto",
-      },
+  },
+  paper: {
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(2),
+    padding: theme.spacing(1),
+    [theme.breakpoints.up(600 + theme.spacing(2) * 2)]: {
+      marginTop: theme.spacing(4),
+      marginBottom: theme.spacing(4),
+      padding: theme.spacing(3),
     },
-    paper: {
-      marginTop: theme.spacing(2),
-      marginBottom: theme.spacing(2),
-      padding: theme.spacing(1),
-      [theme.breakpoints.up(600 + theme.spacing(2) * 2)]: {
-        marginTop: theme.spacing(4),
-        marginBottom: theme.spacing(4),
-        padding: theme.spacing(3),
-      },
-    },
-  });
-});
+  },
+}));
 
 function App() {
   const classes = useStyles();

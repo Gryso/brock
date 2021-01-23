@@ -10,8 +10,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Progress(props) {
-  const classes = useStyles(props);
+function Progress() {
+  const classes = useStyles();
 
   return (
     <Box className={classes.root}>

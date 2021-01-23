@@ -1,4 +1,4 @@
-import {Accordion, AccordionDetails, AccordionSummary, ListItem, makeStyles, Typography} from "@material-ui/core";
+import {Accordion, AccordionDetails, AccordionSummary, makeStyles, Typography} from "@material-ui/core";
 import React from "react";
 import axios from "axios";
 import PokemonDetails from "./PokemonDetails";
@@ -30,29 +30,27 @@ function Pokemon({name, url}) {
   }
 
   return (
-    <ListItem dense>
-      <Accordion
-        className={classes.root}
-        TransitionProps={{
-          mountOnEnter: true
-        }}>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          IconButtonProps={{
-            onClick: () => {
-              if (!details) {
-                fetchDetails();
-              }
+    <Accordion
+      className={classes.root}
+      TransitionProps={{
+        mountOnEnter: true
+      }}>
+      <AccordionSummary
+        expandIcon={<ExpandMoreIcon />}
+        IconButtonProps={{
+          onClick: () => {
+            if (!details) {
+              fetchDetails();
             }
-          }}
-        >
-          <Typography className={classes.name}>{name}</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          {<PokemonDetails details={details} />}
-        </AccordionDetails>
-      </Accordion>
-    </ListItem>
+          }
+        }}
+      >
+        <Typography className={classes.name}>{name}</Typography>
+      </AccordionSummary>
+      <AccordionDetails>
+        {<PokemonDetails details={details} />}
+      </AccordionDetails>
+    </Accordion>
   );
 }
 

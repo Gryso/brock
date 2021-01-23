@@ -1,4 +1,4 @@
-import {List, ListItem, ListItemText, makeStyles,} from "@material-ui/core";
+import {Box, Button, makeStyles,} from "@material-ui/core";
 import React, {useEffect, useReducer} from "react";
 import Pokemon from "./Pokemon";
 import axios from "axios";
@@ -6,9 +6,11 @@ import Progress from "./Progress";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    marginTop: theme.spacing(2),
+    marginTop: theme.spacing(3),
   },
   loadMore: {
+    width: "100%",
+    padding: theme.spacing(2),
     textAlign: "center",
     marginTop: theme.spacing(4),
   }
@@ -57,16 +59,14 @@ function ListOfPokemon() {
   }
 
   return (
-    <List className={classes.root}>
+    <Box className={classes.root}>
       {state.pokemon.map((pokemon, index) => <Pokemon key={index} name={pokemon.name} url={pokemon.url} />)}
       {state.nextUrl ?
-        <ListItem button component="li" className={classes.loadMore} onClick={fetchPokemon}>
-          <ListItemText>
-            Load more
-          </ListItemText>
-        </ListItem>
+        <Button className={classes.loadMore} onClick={fetchPokemon}>
+          Load more
+        </Button>
         : null}
-    </List>
+    </Box>
   );
 }
 

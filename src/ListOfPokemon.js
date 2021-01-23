@@ -53,7 +53,7 @@ function ListOfPokemon() {
           setIsFetching(true);
           fetchPokemon();
         }}>
-          Load more
+          {isFetching? "Loading..." : "Load more"}
         </Button>
         : null}
     </Box>
